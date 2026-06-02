@@ -34,28 +34,4 @@ if st.sidebar.button("Buscar"):
     st.subheader("Resultados")
     st.dataframe(result)
 
-def search_by_director(director):return movies_df[ movies_df["director"] == director ]
-st.sidebar.subheader("Filtrar por director")
-directors = sorted(movies_df["director"].unique())
-selected_director = st.sidebar.selectbox( "Director",  directors)
 
-if st.sidebar.button("Filtrar director"):
-    result = search_by_director( selected_director  )
-    st.write(   f"Total encontrados: {len(result)}"  )
-    st.dataframe(result)
-    st.sidebar.subheader( "Nuevo filme")
-
-with st.sidebar.form("movie_form"):
-    company = st.text_input("Company")
-    director = st.text_input("Director")
-    genre = st.text_input("Genre")
-    name = st.text_input("Movie Name")
-    submit = st.form_submit_button(  "Guardar" )
-
-if submit:
-    db.collection("movies").add({
-            "company": company,
-            "director": director,
-            "genre": genre,
-            "name": name  })
-st.success( "Película agregada"  )
