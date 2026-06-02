@@ -6,11 +6,6 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 st.title("Mi app de películas")
 
-if not firebase_admin._apps:
-    cred = credentials.Certificate("movies-dashboard-90974-firebase-adminsdk-fbsvc-165b996a5d.json")
-    firebase_admin.initialize_app(cred)
-    db = firestore.client()
-
 def load_movies():
     docs = db.collection("movies").stream()
     movies = []
