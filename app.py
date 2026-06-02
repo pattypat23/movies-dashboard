@@ -6,7 +6,7 @@ from firebase_admin import credentials, firestore
 # CONEXIÓN A FIREBASE
 # -------------------------
 if not firebase_admin._apps:
-    cred = credentials.Certificate("movies-dashboard-90974-firebase-adminsdk.json")
+    cred = credentials.Certificate("movies-dashboard-90974-firebase-adminsdk-fbsvc-9dddc8d143.json")
     firebase_admin.initialize_app(cred)
 db = firestore.client()
 
