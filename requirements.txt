@@ -1,3 +1,4 @@
 streamlit
 pandas
 firebase-admin
+movies-dashboard-90974-firebase-adminsdk-fbsvc-9dddc8d143.json
