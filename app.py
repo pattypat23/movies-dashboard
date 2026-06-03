@@ -8,18 +8,21 @@ import json
 # CONEXIÓN A FIREBASE
 # -------------------------
 if not firebase_admin._apps:
-    cred_dict = json.loads(st.secrets["firebase"])
-    cred = credentials.Certificate(cred_dict)
+    #cred_dict = json.loads(st.secrets["firebase"])
+    #cred = credentials.Certificate(cred_dict)
+    cred = credentials.Certificate(dict(st.secrets))
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-st.write("Conectando Firestore...")
+st.write("Intentando leer Firestore...")
 
-docs = list(db.collection("movies").stream())
+docs = db.collection("movies").limit(5).stream()
 
-st.write("Docs encontrados:", len(docs))
-st.write(docs)
+docs_list = list(docs)
+
+st.write("Docs encontrados:", len(docs_list))
+st.write(docs_list)
 
 
 # -------------------------
