@@ -2,12 +2,17 @@ import streamlit as st
 import pandas as pd
 import firebase_admin
 from firebase_admin import credentials, firestore
+import json
+
 # -------------------------
 # CONEXIÓN A FIREBASE
 # -------------------------
 if not firebase_admin._apps:
-    cred = credentials.Certificate("movies-dashboard-90974-firebase-adminsdk-fbsvc-9dddc8d143.json")
-    firebase_admin.initialize_app(cred)
+cred_dict = json.loads(st.secrets["firebase"])
+cred = credentials.Certificate(cred_dict)
+
+firebase_admin.initialize_app(cred)
+
 db = firestore.client()
 
 # -------------------------
