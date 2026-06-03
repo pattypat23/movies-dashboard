@@ -7,15 +7,11 @@ import json
 # -------------------------
 # CONEXIÓN A FIREBASE
 # -------------------------
-#if not firebase_admin._apps:
-  #  cred_dict = json.loads(st.secrets["firebase"])
-   # cred = credentials.Certificate(cred_dict)
-   # firebase_admin.initialize_app(cred)
+ if not firebase_admin._apps:
+   cred_dict = json.loads(st.secrets["firebase"])
+   cred = credentials.Certificate(cred_dict)
+   firebase_admin.initialize_app(cred)
 
-
-if not firebase_admin._apps:
-    cred = credentials.Certificate("movies-dashboard-90974-firebase-adminsdk-fbsvc-de658885e8.json")
-    firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
