@@ -14,7 +14,7 @@ db = firestore.client()
 # FUNCION PARA CARGAR DATOS
 # -------------------------
 
-st.title("Mi app de películas")
+st.title("Aplicación de películas")
 
 def load_movies():
     docs = db.collection("movies").stream()
@@ -27,25 +27,37 @@ def load_movies():
 
 movies_df = load_movies()
 
+# DEBUG (no me sale)
+
+st.write("Total películas:", len(movies_df))
+st.dataframe(movies_df)
+
 # -------------------------
-# UI STREAMLIT
+# SIDEBAR
 # -------------------------
-movies_df.head()
+# movies_df.head()
+
+st.sidebar.title("Filtros")
+
+movie_name = st.sidebar.text_input("Buscar película")
+
+# -------------------------
+# BUSQUEDA
+# -------------------------
+
+if st.sidebar.button("Buscar"):
+    result = movies_df[movies_df["name"].str.contains(movie_name, case=False, na=False ) ]
+    st.subheader("Resultados")
+    st.dataframe(result)
+else:
+    st.warning("Escribe un nombre para buscar")
+
+st.dataframe(movies_df.head())
 st.title("Movies Dashboard")
 
 # Mostrar todos
-if st.sidebar.checkbox("Mostrar todos los filmes"):
-    st.header("Listado completo de filmes")
+if st.sidebar.checkbox("Mostrar todas las películas"):
+    st.header("Listado completo de películas")
     st.dataframe(movies_df)
-    st.sidebar.subheader("Buscar película")
-    movie_name = st.sidebar.text_input("Ingrese parte del título")
-# Buscar
-if st.sidebar.button("Buscar"):
-    result = movies_df[movies_df["name"].str.contains(
-    movie_name,
-    case=False,
-    na=False ) ]
-    st.subheader("Resultados")
-    st.dataframe(result)
 
 
