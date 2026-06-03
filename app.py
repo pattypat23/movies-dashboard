@@ -14,6 +14,14 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 
+st.write("Conectando Firestore...")
+
+docs = list(db.collection("movies").stream())
+
+st.write("Docs encontrados:", len(docs))
+st.write(docs)
+
+
 # -------------------------
 # FUNCION PARA CARGAR DATOS
 # -------------------------
