@@ -30,8 +30,8 @@ movies_df = load_movies()
 # -------------------------
 # UI STREAMLIT
 # -------------------------
-    movies_df.head()
-    st.title("Movies Dashboard")
+movies_df.head()
+st.title("Movies Dashboard")
 
 # Mostrar todos
 if st.sidebar.checkbox("Mostrar todos los filmes"):
