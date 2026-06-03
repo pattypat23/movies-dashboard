@@ -1,0 +1,18 @@
+# Archivos de Firebase 
+*.json
+
+# Entornos y caché
+__pycache__/
+*.pyc
+
+# Variables locales
+.env
+
+# Streamlit
+.streamlit/
+
+# Jupyter / Colab
+.ipynb_checkpoints/
+
+# Logs
+*.log
