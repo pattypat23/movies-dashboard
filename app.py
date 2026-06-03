@@ -19,10 +19,13 @@ st.title("Mi app de películas")
 def load_movies():
     docs = db.collection("movies").stream()
     movies = []
+    
     for doc in docs:
-     movies.append(doc.to_dict())
+         movies.append(doc.to_dict())
+        
     return pd.DataFrame(movies)
-    movies_df = load_movies()
+
+movies_df = load_movies()
 
 # -------------------------
 # UI STREAMLIT
