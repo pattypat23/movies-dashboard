@@ -54,8 +54,8 @@ movies_df = load_movies()
 # movies_df.head()
 
 st.sidebar.title("Filtros")
-
-movie_name = st.sidebar.text_input("Buscar película")
+st.sidebar.subheader("Buscar película")
+movie_name = st.sidebar.text_input("Ingrese parte del título de la Película")
 
 # -------------------------
 # BUSQUEDA
@@ -74,5 +74,37 @@ st.dataframe(movies_df.head())
 if st.sidebar.checkbox("Mostrar todas las películas"):
     st.header("Listado completo de películas")
     st.dataframe(movies_df)
+
+def search_by_director(director):
+
+    return movies_df[movies_df["director"] == director]
+st.sidebar.subheader("Filtrar por director")
+directors = sorted(movies_df["director"].unique())
+selected_director = st.sidebar.selectbox("Director",directors)
+if st.sidebar.button("Filtrar director"):
+    result = search_by_director(selected_director)
+    st.write(f"Total encontrados: {len(result)}")
+    st.dataframe(result)
+
+
+st.sidebar.subheader("Nuevo filme")
+
+with st.sidebar.form("movie_form"):
+    company = st.text_input("Company")
+    director = st.text_input("Director")
+    genre = st.text_input("Genre")
+    name = st.text_input("Movie Name")
+    submit = st.form_submit_button("Guardar")
+
+    if submit:
+        db.collection("movies").add({
+            "company": company,
+            "director": director,
+            "genre": genre,
+            "name": name})
+
+        st.success("Película agregada")
+
+
 
 
