@@ -84,20 +84,20 @@ st.sidebar.subheader("Filtrar por director")
 
 if movies_df is not None and not movies_df.empty and "director" in movies_df.columns:
  
-directors = sorted(movies_df["director"].unique())
-selected_director = st.sidebar.selectbox("Director",directors)
+  directors = sorted(movies_df["director"].unique())
+  selected_director = st.sidebar.selectbox("Director",directors)
 
-if st.sidebar.button("Filtrar director"):
+  if st.sidebar.button("Filtrar director"):
     result = search_by_director(selected_director)
     st.write(f"Total encontrados: {len(result)}")
     st.dataframe(result)
 
 else:
-    st.sidebar.warning("No hay datos de directores disponibles")
-st.sidebar.subheader("Nuevo filme")
+  st.sidebar.warning("No hay datos de directores disponibles")
 
 # Agregar nueva Película
 
+st.sidebar.subheader("Nuevo filme")
 with st.sidebar.form("movie_form"):
     company = st.text_input("Company")
     director = st.text_input("Director")
