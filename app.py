@@ -14,6 +14,10 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 
+docs = db.collection("movies").limit(5).stream()
+
+docs_list = list(docs)
+
 # -------------------------
 # FUNCION PARA CARGAR DATOS
 # -------------------------
@@ -31,11 +35,13 @@ def load_movies():
 
 movies_df = load_movies()
 
+st.write("Total películas:", len(movies_df))
+st.dataframe(movies_df)
+
 # -------------------------
 # SIDEBAR
 # -------------------------
-
-movies_df.head()
+#movies_df.head()
 
 st.sidebar.title("Filtros")
 st.sidebar.subheader("Buscar película")
