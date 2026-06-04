@@ -48,8 +48,8 @@ if st.sidebar.button("Buscar"):
     result = movies_df[movies_df["name"].str.contains(movie_name, case=False, na=False ) ]
     st.subheader("Resultados")
     st.dataframe(result)
-#else:
-#    st.warning("Escribe un nombre para buscar")
+else:
+    st.warning("Escribe un nombre para buscar")
 
 st.dataframe(movies_df.head())
 
