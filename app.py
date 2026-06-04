@@ -23,6 +23,8 @@ db = firestore.client()
 
 st.title("Aplicación de películas")
 
+
+@st.cache_data
 def load_movies():
     docs = db.collection("movies").stream()
     movies = []
