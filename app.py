@@ -34,7 +34,8 @@ movies_df = load_movies()
 # -------------------------
 # SIDEBAR
 # -------------------------
-# movies_df.head()
+
+movies_df.head()
 
 st.sidebar.title("Filtros")
 st.sidebar.subheader("Buscar película")
