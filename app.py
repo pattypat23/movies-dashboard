@@ -14,9 +14,8 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 
-docs = db.collection("movies").limit(5).stream()
-
-docs_list = list(docs)
+#docs = db.collection("movies").limit(5).stream()
+#docs_list = list(docs)
 
 # -------------------------
 # FUNCION PARA CARGAR DATOS
