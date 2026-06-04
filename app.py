@@ -19,14 +19,11 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 
-st.write("Intentando leer Firestore...")
-
-docs = db.collection("movies").limit(5).stream()
-
-docs_list = list(docs)
-
-st.write("Docs encontrados:", len(docs_list))
-st.write(docs_list)
+#st.write("Intentando leer Firestore...")
+#docs = db.collection("movies").limit(5).stream()
+#docs_list = list(docs)
+#st.write("Docs encontrados:", len(docs_list))
+#st.write(docs_list)
 
 
 # -------------------------
