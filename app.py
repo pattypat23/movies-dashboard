@@ -45,8 +45,8 @@ movies_df = load_movies()
 
 # DEBUG (no me sale)
 
-st.write("Total películas:", len(movies_df))
-st.dataframe(movies_df)
+#st.write("Total películas:", len(movies_df))
+#st.dataframe(movies_df)
 
 # -------------------------
 # SIDEBAR
@@ -69,7 +69,6 @@ else:
     st.warning("Escribe un nombre para buscar")
 
 st.dataframe(movies_df.head())
-st.title("Movies Dashboard")
 
 # Mostrar todos
 if st.sidebar.checkbox("Mostrar todas las películas"):
