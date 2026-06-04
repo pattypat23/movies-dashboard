@@ -44,10 +44,10 @@ movie_name = st.sidebar.text_input("Ingrese parte del título de la Película")
 # BUSQUEDA
 # -------------------------
 
-#if st.sidebar.button("Buscar"):
-#    result = movies_df[movies_df["name"].str.contains(movie_name, case=False, na=False ) ]
-#    st.subheader("Resultados")
-#    st.dataframe(result)
+if st.sidebar.button("Buscar"):
+    result = movies_df[movies_df["name"].str.contains(movie_name, case=False, na=False ) ]
+    st.subheader("Resultados")
+    st.dataframe(result)
 #else:
 #    st.warning("Escribe un nombre para buscar")
 
