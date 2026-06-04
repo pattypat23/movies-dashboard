@@ -7,24 +7,12 @@ import json
 # -------------------------
 # CONEXIÓN A FIREBASE
 # -------------------------
-#if not firebase_admin._apps:
- #   cred_dict = json.loads(st.secrets["firebase"])
- #   cred = credentials.Certificate(cred_dict)
- #   firebase_admin.initialize_app(cred)
 
 if not firebase_admin._apps:
     cred = credentials.Certificate(dict(st.secrets["firebase"]))
     firebase_admin.initialize_app(cred)
 
-
 db = firestore.client()
-
-#st.write("Intentando leer Firestore...")
-#docs = db.collection("movies").limit(5).stream()
-#docs_list = list(docs)
-#st.write("Docs encontrados:", len(docs_list))
-#st.write(docs_list)
-
 
 # -------------------------
 # FUNCION PARA CARGAR DATOS
@@ -43,11 +31,6 @@ def load_movies():
 
 movies_df = load_movies()
 
-# DEBUG (no me sale)
-
-#st.write("Total películas:", len(movies_df))
-#st.dataframe(movies_df)
-
 # -------------------------
 # SIDEBAR
 # -------------------------
@@ -61,12 +44,12 @@ movie_name = st.sidebar.text_input("Ingrese parte del título de la Película")
 # BUSQUEDA
 # -------------------------
 
-if st.sidebar.button("Buscar"):
-    result = movies_df[movies_df["name"].str.contains(movie_name, case=False, na=False ) ]
-    st.subheader("Resultados")
-    st.dataframe(result)
-else:
-    st.warning("Escribe un nombre para buscar")
+#if st.sidebar.button("Buscar"):
+#    result = movies_df[movies_df["name"].str.contains(movie_name, case=False, na=False ) ]
+#    st.subheader("Resultados")
+#    st.dataframe(result)
+#else:
+#    st.warning("Escribe un nombre para buscar")
 
 st.dataframe(movies_df.head())
 
